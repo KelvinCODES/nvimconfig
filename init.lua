@@ -1,4 +1,4 @@
 require("keymap")
 require("opt")
-require("fileformat")
+require("init")
 require("plugin-manager")
