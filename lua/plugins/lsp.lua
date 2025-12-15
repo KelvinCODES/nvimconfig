@@ -4,7 +4,55 @@ return {
         version = '*',
         event = 'InsertEnter', -- or a more specific event
         config = function()
-            require('blink.cmp').setup()
+            require('blink.cmp').setup({
+                snippets = {
+                    preset = 'luasnip'
+                },
+                completion = {
+                    menu = {
+                        draw = {
+                            columns = {
+                                { "kind_icon", "label", "label_description", "source_name", gap = 1 }, -- Add "source_name"
+                            },
+                            components = {
+                                source_name = {
+                                    text = function(ctx)
+                                        return "[" .. ctx.source_name .. "]" -- Customize how the source name appears
+                                    end,
+                                },
+                            },
+                        },
+                    },
+                },
+            })
+        end,
+    },
+    {
+        'L3MON4D3/LuaSnip',
+        version = 'v2.*',
+        build = 'make install_jsregexp',
+        dependencies = {
+            'rafamadriz/friendly-snippets', -- Now correctly listed as a dependency
+        },
+        config = function()
+            -- Load the snippets first
+            require("luasnip.loaders.from_vscode").lazy_load()
+
+            -- Setup LuaSnip configuration
+            require("luasnip").setup({
+                enable_autosnippets = true,
+            })
+
+            local ls = require("luasnip")
+
+            vim.keymap.set({"i"}, "<C-l>", function() ls.expand() end, {silent = true})
+            vim.keymap.set({"i", "s"}, "<C-;>", function() ls.jump(1) end, {silent = true})
+            vim.keymap.set({"i", "s"}, "<C-,>", function() ls.jump(-1) end, {silent = true})
+            vim.keymap.set({"i", "s"}, "<C-e>", function()
+                if ls.choice_active() then
+                    ls.change_choice(1)
+                end
+            end, {silent = true})
         end,
     },
     {
@@ -44,7 +92,7 @@ return {
                 -- show diagnostics for line
                 vim.keymap.set("n", "<leader>d", function() vim.diagnostic.open_float() end, { desc = "show diagnostics for line"})
                 --help on parameter signatures when calling a method
-                vim.keymap.set("i", "<leader>h", function() vim.lsp.buf.signature_help() end, opts)
+                vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
                 --help on word hovered
                 vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, { desc = "vim.lsp.buf.hover()", nowait = true })
 
