@@ -1,6 +1,12 @@
 -- lazy.nvim
 return {
     "folke/snacks.nvim",
+    opts = {
+        picker = {
+            enabled = true,
+            ui_select = true,
+        },
+    },
     ---@type snacks.Config
     keys = {
         { "<leader>ff", function() Snacks.picker.smart() end, desc = "Smart Find Files" },

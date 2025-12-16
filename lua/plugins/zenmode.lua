@@ -1,8 +1,9 @@
 return {
   --- maybe keep, not sure
   "folke/zen-mode.nvim",
+  lazy = true,
   opts = {},
-  config = function()
-      vim.keymap.set("n", "<leader>zz", "<CMD>ZenMode<CR>", {})
-  end
+  keys = {
+      { "<leader>zz", "<CMD>ZenMode<CR>", desc = "Toggle Zen Mode" },
+  },
 }
