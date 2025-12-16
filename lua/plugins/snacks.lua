@@ -2,11 +2,11 @@
 return {
 	"folke/snacks.nvim",
 	opts = {
-		gh = { enabled = true },
 		picker = {
 			enabled = true,
 			ui_select = true,
 		},
+		gh = { enabled = true },
 		gitbrowse = { enabled = true },
         --- status column disabled, not sure if I like how this looks
 		---statuscolumn = {
