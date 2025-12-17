@@ -87,7 +87,7 @@ return {
 				})
 			end,
 			desc = "Git Browse (copy link)",
-			mode = { "n", "v" }, -- Works for single lines or visual selections
+			mode = { "n", "v" },
 			silent = true,
 		},
 		{
