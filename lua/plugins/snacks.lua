@@ -6,6 +6,8 @@ return {
 			enabled = true,
 			ui_select = true,
 		},
+        -- maybe delete gh later and the key map below to open PRs
+        -- decide between gh and octo
 		gh = { enabled = true },
 		gitbrowse = { enabled = true },
 		-- status column disabled, not sure if I like how this looks
@@ -69,12 +71,12 @@ return {
 		{
 			"<leader>gp",
 			function()
-				Snacks.gh.prs()
+				Snacks.picker.gh_pr()
 			end,
 			desc = "GH Pull Requests",
 		},
 		{
-			"<leader>gy",
+			"<leader>oy",
 			function()
 				Snacks.gitbrowse({
 					open = function(url)
@@ -83,15 +85,15 @@ return {
 							vim.notify("Copied Git link to clipboard")
 						end, 0)
 					end,
-                    notify = false,
+					notify = false,
 				})
 			end,
 			desc = "Git Browse (copy link)",
-			mode = { "n", "v" }, -- Works for single lines or visual selections
+			mode = { "n", "v" },
 			silent = true,
 		},
 		{
-			"<leader>gb",
+			"<leader>oo",
 			function()
 				Snacks.gitbrowse()
 			end,
