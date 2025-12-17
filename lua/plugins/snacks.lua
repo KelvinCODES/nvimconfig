@@ -69,12 +69,12 @@ return {
 		{
 			"<leader>gp",
 			function()
-				Snacks.gh.prs()
+				Snacks.picker.gh_pr()
 			end,
 			desc = "GH Pull Requests",
 		},
 		{
-			"<leader>gy",
+			"<leader>oy",
 			function()
 				Snacks.gitbrowse({
 					open = function(url)
@@ -83,7 +83,7 @@ return {
 							vim.notify("Copied Git link to clipboard")
 						end, 0)
 					end,
-                    notify = false,
+					notify = false,
 				})
 			end,
 			desc = "Git Browse (copy link)",
@@ -91,7 +91,7 @@ return {
 			silent = true,
 		},
 		{
-			"<leader>gb",
+			"<leader>oo",
 			function()
 				Snacks.gitbrowse()
 			end,
