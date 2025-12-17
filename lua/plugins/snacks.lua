@@ -6,6 +6,8 @@ return {
 			enabled = true,
 			ui_select = true,
 		},
+        -- maybe delete gh later and the key map below to open PRs
+        -- decide between gh and octo
 		gh = { enabled = true },
 		gitbrowse = { enabled = true },
 		-- status column disabled, not sure if I like how this looks
