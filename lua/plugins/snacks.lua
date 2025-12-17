@@ -8,12 +8,12 @@ return {
 		},
 		gh = { enabled = true },
 		gitbrowse = { enabled = true },
-        --- status column disabled, not sure if I like how this looks
-		---statuscolumn = {
-		---	enabled = true,
-		---	left = { "mark", "sign" },
-		---	right = { "git", "fold", "lnum" },
-		---},
+		-- status column disabled, not sure if I like how this looks
+		-- statuscolumn = {
+		-- 	enabled = true,
+		-- 	left = { "mark", "git" },
+		-- 	right = { "sign", "fold" },
+		-- },
 	},
 	---@type snacks.Config
 	keys = {
@@ -79,12 +79,16 @@ return {
 				Snacks.gitbrowse({
 					open = function(url)
 						vim.fn.setreg("+", url) -- Copy to system clipboard
-						vim.notify("Copied Git link to clipboard")
+						vim.defer_fn(function()
+							vim.notify("Copied Git link to clipboard")
+						end, 0)
 					end,
+                    notify = false,
 				})
 			end,
 			desc = "Git Browse (copy link)",
 			mode = { "n", "v" }, -- Works for single lines or visual selections
+			silent = true,
 		},
 		{
 			"<leader>gb",
