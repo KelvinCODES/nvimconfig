@@ -14,3 +14,11 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 -- Move up and down quickfix list
 vim.keymap.set("n", "<C-j>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<C-k>", "<cmd>cprev<CR>zz")
+
+-- Open a new tmux window with tms session
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tms<CR>")
+
+-- Close quickfix list
+vim.keymap.set("n", "<leader>qf", "<cmd>cclose<CR>", { desc = "Close Quickfix List" })
+
+
