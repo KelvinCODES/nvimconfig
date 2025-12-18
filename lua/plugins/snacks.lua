@@ -5,9 +5,14 @@ return {
 		picker = {
 			enabled = true,
 			ui_select = true,
+			formatters = {
+				file = {
+					filename_first = true,
+				},
+			},
 		},
-        -- maybe delete gh later and the key map below to open PRs
-        -- decide between gh and octo
+		-- maybe delete gh later and the key map below to open PRs
+		-- decide between gh and octo
 		gh = { enabled = true },
 		gitbrowse = { enabled = true },
 		-- status column disabled, not sure if I like how this looks
@@ -58,6 +63,13 @@ return {
 			end,
 			desc = "Search for word under cursor until spaces",
 			mode = { "n", "x" },
+		},
+		{
+			"<leader>/",
+			function()
+				Snacks.picker.lines()
+			end,
+			desc = "Buffer Lines",
 		},
 		{
 			"<leader>e",
